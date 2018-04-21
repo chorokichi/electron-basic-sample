@@ -27,7 +27,7 @@ package.jsonで上記コマンドで`electron .`を実行するように記述�
 
 ### High Priority - 限定的条件下でのコミット（目的が明確）
 * upgrade：バージョンアップ(バージョン番号の変更など)
-* document: ドキュメントのアップデート
+* doc: ドキュメントのアップデート
 
 ### Medium Priority - 一般的条件下でのコミット
 * add：新規機能追加
