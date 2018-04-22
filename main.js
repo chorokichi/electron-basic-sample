@@ -16,7 +16,7 @@ logger.info("*********************");
 // ガーベシゴレクションの機能によってJavascript Objectが自動で回収されてしまい、自動で閉じてしまうため
 let win
 
-logger.info("main.jsの読み込み");
+logger.info("main.jsの読み込み - " + __dirname);
 function createWindow() {
     logger.info("ブラウザ窓の作成");
     win = new BrowserWindow({ width: 800, height: 600 })
@@ -28,8 +28,8 @@ function createWindow() {
         slashes: true
     }))
 
-    logger.info("Devツールを開く");
-    win.webContents.openDevTools()
+    // logger.info("Devツールを開く");
+    // win.webContents.openDevTools()
 
     logger.info("[win/closed]Windowを閉じた時に呼ばれる処理を設定。");
     win.on('closed', () => {
