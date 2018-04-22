@@ -2,31 +2,38 @@ const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const url = require('url')
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
+const logger = require('alibrary/jlog')("main");
+
+logger.info("*********************");
+logger.info("                     ");
+logger.info("                     ");
+logger.info("    main.js start    ");
+logger.info("                     ");
+logger.info("                     ");
+logger.info("*********************");
+
+// winをglobalに定義している理由としては、ローカル変数だと
+// ガーベシゴレクションの機能によってJavascript Objectが自動で回収されてしまい、自動で閉じてしまうため
 let win
 
-console.log("main.js");
+logger.info("main.jsの読み込み");
 function createWindow() {
-    console.log("createWindow");
-    // Create the browser window.
+    logger.info("ブラウザ窓の作成");
     win = new BrowserWindow({ width: 800, height: 600 })
 
-    // and load the index.html of the app.
+    logger.info("index.htmlの読み込む");
     win.loadURL(url.format({
         pathname: path.join(__dirname, 'index.html'),
         protocol: 'file:',
         slashes: true
     }))
 
-    // Open the DevTools.
+    logger.info("Devツールを開く");
     win.webContents.openDevTools()
 
-    // Emitted when the window is closed.
+    logger.info("Windowを閉じた時に呼ばれる処理を設定。");
     win.on('closed', () => {
-        // Dereference the window object, usually you would store windows
-        // in an array if your app supports multi windows, this is the time
-        // when you should delete the corresponding element.
+        logger.info("ウィンドウ窓の削除");
         win = null
     })
 }
@@ -38,8 +45,8 @@ app.on('ready', createWindow)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
-    console.log("window-all-closed");
-    console.log("process.platform:" + process.platform);
+    logger.info("window-all-closed");
+    logger.info("process.platform:" + process.platform);
     // On macOS it is common for applications and their menu bar
     // to stay active until the user quits explicitly with Cmd + Q
 
@@ -51,8 +58,8 @@ app.on('window-all-closed', () => {
 })
 
 app.on('activate', () => {
-    console.log("activate");
-    console.log(win);
+    logger.info("activate");
+    logger.info(win);
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (win === null) {

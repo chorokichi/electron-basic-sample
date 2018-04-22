@@ -39,3 +39,17 @@ package.jsonで上記コマンドで`electron .`を実行するように記述�
 * disable：無効化（コメントアウト等）
 * remove：削除（機能の削除）
 * revert：変更取り消し
+
+
+
+# 利用しているライブラリー
+
+## Log関係
+
+* log4js
+* log4js-extend
+
+```
+# npm install log4js --save //  "--save" => node_modulesにダウンロードするついでにpackage.jsonに書き込む
+```
+
