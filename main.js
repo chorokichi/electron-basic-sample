@@ -31,35 +31,35 @@ function createWindow() {
     logger.info("Devツールを開く");
     win.webContents.openDevTools()
 
-    logger.info("Windowを閉じた時に呼ばれる処理を設定。");
+    logger.info("[win/closed]Windowを閉じた時に呼ばれる処理を設定。");
     win.on('closed', () => {
         logger.info("ウィンドウ窓の削除");
         win = null
     })
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+logger.info("[app/ready]初期化終了時に呼ばれるcreateWindowを登録する。");
+app.on('ready', createWindow);
 
+logger.info("[app/window-all-closed]すべてのウインドウが閉じた時の処理をwindow-all-closedとして登録する。");
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
-    logger.info("window-all-closed");
+    logger.info("すべてのウインドウが閉じられたあとに実行する処理を開始する(window-all-closed)");
     logger.info("process.platform:" + process.platform);
-    // On macOS it is common for applications and their menu bar
-    // to stay active until the user quits explicitly with Cmd + Q
 
-    // 本来Macなら全てのWindowを閉じたとしてもDockerに残るようにするが、ここでは終了するように変更
+    logger.info("本来Macなら全てのWindowを閉じたとしてもDockerに残るようにするが、ここでは終了するように変更している");
     app.quit()
     // if (process.platform !== 'darwin') {
     //     app.quit()
     // }
 })
 
+logger.info("[app/activate]アクディブ時に実行する処理をactivateとして登録する。");
+logger.info("=> アクディブ時とは？...最小化してから元に戻した時")
 app.on('activate', () => {
-    logger.info("activate");
+    logger.info("アクディブ時に実行する処理を開始する(activate)");
     logger.info(win);
+
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (win === null) {
