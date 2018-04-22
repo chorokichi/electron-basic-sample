@@ -16,6 +16,13 @@ package.jsonで上記コマンドで`electron .`を実行するように記述�
 なお、electronコマンドでは、”main”に設定している"main.js"を最初に読み込むファイルとしている。
 
 
+# パッケージング方法
+
+```
+// Mac os用(versionはelectronのバージョンでpackage.json参照)
+$node_modules/electron-packager/cli.js . electron-basic-sample --platform=darwin --arch=x64 --version=1.8.4
+```
+
 # コミット時のルール
 
 [このサイト](https://qiita.com/itosho/items/9565c6ad2ffc24c09364)を参考にルールでプレフィックスをつけることにする
