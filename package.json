@@ -10,9 +10,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^1.8.4"
+    "electron": "^1.8.4",
   },
   "dependencies": {
+    "fs": "0.0.1-security",
     "log4js": "^1.0.1",
     "log4js-extend": "^0.2.1"
   }
